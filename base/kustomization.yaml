@@ -4,9 +4,6 @@ resources:
   - resources/deployment.yaml
   - resources/service.yaml
 configMapGenerator:
-  - name: duke-admin-authentication-service-configmap-env
-    envs:
-      - configs/config.env
   - name: duke-admin-authentication-service-configmap-file
     files:
       - configs/config.yaml
