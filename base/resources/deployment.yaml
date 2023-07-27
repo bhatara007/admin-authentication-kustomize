@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: duke-admin-authentication-service
+  labels:
+    app.kubernetes.io/name: duke-admin-authentication-service
+    app.kubernetes.io/instance: duke-admin-authentication-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: duke-admin-authentication-service
+      app.kubernetes.io/instance: duke-admin-authentication-service
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: duke-admin-authentication-service
+        app.kubernetes.io/instance: duke-admin-authentication-service
+    spec:
+      containers:
+        - name: duke-admin-authentication-service
+          image: asia.gcr.io/poc-innovation-iot/duke-admin-authentication-service:TAG
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: duke-admin-authentication-service-secret-env
+          volumeMounts:
+              - mountPath: /config/config.yaml
+                name: duke-admin-authentication-service-configmap-file
+                subPath: config.yaml
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 10
+            initialDelaySeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 10
+            initialDelaySeconds: 10
+          resources:
+            limits:
+              cpu: 64m
+              memory: 64Mi
+            requests:
+              cpu: 32m
+              memory: 32Mi
+      volumes:
+        - name: duke-admin-authentication-service-configmap-file
+          configMap:
+            name: duke-admin-authentication-service-configmap-file

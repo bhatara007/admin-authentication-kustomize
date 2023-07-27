@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: duke-admin-authentication-service
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: duke-admin-authentication-service
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 512Mi

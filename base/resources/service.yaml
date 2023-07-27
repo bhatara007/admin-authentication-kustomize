@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: duke-admin-authentication-service
+  labels:
+    app.kubernetes.io/name: duke-admin-authentication-service
+    app.kubernetes.io/instance: duke-admin-authentication-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: duke-admin-authentication-service
+    app.kubernetes.io/instance: duke-admin-authentication-service
