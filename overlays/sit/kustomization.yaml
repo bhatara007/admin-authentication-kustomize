@@ -6,7 +6,7 @@ resources:
 
 images:
 - name: asia.gcr.io/poc-innovation-iot/duke-admin-authentication-service
-  newTag: 24d6845e
+  newTag: df84fc95
 
 configMapGenerator:
 - behavior: merge
