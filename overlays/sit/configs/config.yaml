@@ -29,5 +29,6 @@ redis:
 user-list-key: duke::admin
 otp-list-key: duke::otp::admin
 otp-count-list-key: duke::otp::count::admin
+otp-reset-list-key: otp::reset
 reset-password-url: http://localhost:5173/reset-password
 
