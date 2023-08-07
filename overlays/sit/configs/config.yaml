@@ -1,4 +1,4 @@
-environment: local
+environment: loadtest
 
 app:
   name: duke-admin-authentication-service
