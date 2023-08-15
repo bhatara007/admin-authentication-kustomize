@@ -10,8 +10,8 @@ spec:
         - name: duke-admin-authentication-service
           resources:
             limits:
-              cpu: 200m
-              memory: 256Mi
+              cpu: 300m
+              memory: 64Mi
             requests:
               cpu: 200m
-              memory: 128Mi
+              memory: 32Mi
